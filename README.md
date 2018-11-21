@@ -8,9 +8,9 @@ OpenMI(https://www.openmi.org/)
 
 ## Documentation
 
-* [API Reference](https://github.com/Fgao1994/test1/blob/master/Doc.docx)
-* [TOPModel Example](https://github.com/Fgao1994/test1/)
-* [Figures](https://github.com/Fgao1994/test1/tree/master/Figures) 
+* [API Reference](https://github.com/Fgao1994/Coupling-Components-and-Services-for-IEM/tree/master/docs)
+* [TOPModel Example](https://github.com/Fgao1994/Coupling-Components-and-Services-for-IEM/)
+* [Figures](https://github.com/Fgao1994/Coupling-Components-and-Services-for-IEM/tree/master/Figures) 
   
 ## The role of client and server in the IEM case 
 
