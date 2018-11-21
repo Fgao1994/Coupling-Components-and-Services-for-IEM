@@ -9,7 +9,6 @@ public class PrecipitationModel extends LinkableEngine {
 	 */
 	private static final long serialVersionUID = 1L;
 	public PrecipitationModel(){
-		//add by zmd 2015.04.07
 		super();
 		this.setEngineApiAccess();
 	}

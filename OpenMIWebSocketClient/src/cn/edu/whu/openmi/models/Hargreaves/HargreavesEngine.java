@@ -46,7 +46,7 @@ public class HargreavesEngine extends SimpleWrapper{
 	//Provenance
 	private String provFile;
 	
-	//add by zmd,20160114, 记录溯源
+
 //	protected Map<ITime, SmartBuffer> bufferInfos = null; 
 	protected List<SmartBufferInfo> bufferInfos = null;
 	

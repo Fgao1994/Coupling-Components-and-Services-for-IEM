@@ -31,15 +31,7 @@ import cn.edu.whu.openmi.provenance.ProvUtils;
 import cn.edu.whu.openmi.provenance.SmartBufferInfo;
 import cn.edu.whu.openmi.smw.SimpleWrapper;
 import cn.edu.whu.openmi.util.OpenMIUtilities;
-/**
- * 说明：TOPMODEL中对于地形指数的不同输入数据，采用不同的处理方式，
- * read_topo_input()是处理原始的TXT文件
- * read_topo_input2()处理tif格式的数据，使用gdal.jar,需要有GDAL环境
- * read_topo_input3()处理自己生成的TXT数据，已包装服务GeoTIFF2Plain。
- * 在测试的时候需要根据自己的需要修改对应的方法。
- * @author zhangmingda
- *
- */
+
 public class WebSocketTopModelEngine extends SimpleWrapper {
 	
 	 double R;//subsurface Recharge rate [L/T]

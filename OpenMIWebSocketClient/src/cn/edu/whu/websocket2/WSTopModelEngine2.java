@@ -19,10 +19,7 @@ import cn.edu.whu.openmi.models.topmodel.TopModelData;
 import cn.edu.whu.openmi.smw.SimpleWrapper;
 import cn.edu.whu.websocket.WSModelUtils;
 
-/**
- * @author zhangmingda
- *
- */
+
 public class WSTopModelEngine2 extends SimpleWrapper {
 
 	public final static String PET_Value_KEY = "PET_Value";

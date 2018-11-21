@@ -17,7 +17,6 @@ public class TopmodelLocalMainTest {
 	public static void execute(){
 		
 		//Parameters for Precipitation
-		//ConfigFile在模型内部指定
 //		Argument precipConfigFileArgument = new Argument("ConfigFile","F:/workspace/Precipitation-config.xml",true);
 //		Argument precipConfigFileArgument = new Argument("ConfigFile","F:\\360sync\\sync\\openmi\\workspace\\OpenMI-1.4-SDK\\src\\cn\\edu\\whu\\openmi\\models\\data\\Precipitation-config.xml",true);
 //		Argument precipInputArgument = new Argument("InputData","F:\\360sync\\sync\\openmi\\workspace\\OpenMI-1.4-SDK\\src\\cn\\edu\\whu\\openmi\\models\\data\\PrecipitationInput.txt",true);
@@ -101,7 +100,7 @@ public class TopmodelLocalMainTest {
 			start+= timeStep;
 			num++;
 		}
-		System.out.println("共循环"+num+"次");
+		
 		trigger.finish();
 		topModel.finish();
 		precipitationModel.finish();
@@ -117,17 +116,11 @@ public class TopmodelLocalMainTest {
 	}
 	
 	public static void main(String[] args){
-		/*long start_time = System.currentTimeMillis();
-		for(int i=0;i<5;i++){
-			TopmodelLocalMainTest.execute();
-		}
-		long end_time = System.currentTimeMillis();
-		System.out.println("用时"+(end_time-start_time)/5);*/
 		
 		long start_time = System.currentTimeMillis();
 		TopmodelLocalMainTest.execute();
 		long end_time = System.currentTimeMillis();
-		System.out.println("用时"+(end_time-start_time));
+		System.out.println("Consuming time:"+(end_time-start_time));
 	}
 	
 }

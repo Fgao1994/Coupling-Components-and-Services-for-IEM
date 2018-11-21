@@ -16,7 +16,7 @@ import cn.edu.whu.openmi.models.data.PrecipitationModel;
 public class HttpTopmodelMainTest {
 	public static void execute(){
 		
-		//虚拟机中运行
+	
 		
 		//String Base_Dir = "/home/fgao/"
 		String Local_Dir = "D:/websocket/openmi/";
@@ -104,9 +104,6 @@ public class HttpTopmodelMainTest {
 		precipitationModel.dispose();
 		hargreavesModel.dispose();
 		
-
-		System.out.println("共循环"+num+"次");
-		
 //		componet1.dispose();
 		System.out.println("Successfully!");
 		//System.exit(0);
@@ -123,6 +120,6 @@ public class HttpTopmodelMainTest {
 		long start_time = System.currentTimeMillis();
 		HttpTopmodelMainTest.execute();
 		long end_time = System.currentTimeMillis();
-		System.out.println("用时"+(end_time-start_time));
+		System.out.println("Consuming time:"+(end_time-start_time));
 	}
 }

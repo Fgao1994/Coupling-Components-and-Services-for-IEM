@@ -2,12 +2,7 @@ package cn.edu.whu.openmi.models.topmodel;
 
 import java.util.Calendar;
 
-/**
- * 用来存储TOPMODEL处理的结果
- * 
- * @author zhangmingda
- *
- */
+
 public class TopModelData {
 	private double precip, pet, runoff, streamFlow;
 	private Calendar time;

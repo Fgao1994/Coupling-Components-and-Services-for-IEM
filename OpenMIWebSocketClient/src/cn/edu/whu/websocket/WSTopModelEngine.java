@@ -25,10 +25,7 @@ import cn.edu.whu.openmi.provenance.ProvUtils;
 import cn.edu.whu.openmi.smw.SimpleWrapper;
 import cn.edu.whu.openmi.util.OpenMIUtilities;
 
-/**
- * @author zhangmingda
- *
- */
+
 public class WSTopModelEngine extends SimpleWrapper {
 
 	private WebSocketClient wc = null;

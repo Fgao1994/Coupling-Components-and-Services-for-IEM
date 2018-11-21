@@ -6,10 +6,7 @@ import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.drafts.Draft_17;
 import org.java_websocket.handshake.ServerHandshake;
 
-/**
- * @author zhangmingda
- *
- */
+
 public class OpenMIWebSocketClient  {
 	private WebSocketClient wc = null;
 	private String wsUrl = null;

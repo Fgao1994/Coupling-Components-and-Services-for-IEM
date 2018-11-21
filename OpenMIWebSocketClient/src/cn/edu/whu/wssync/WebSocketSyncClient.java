@@ -15,10 +15,6 @@ import cn.edu.whu.test.wshttp.SendSyn;
 import cn.edu.whu.test.wshttp.ValueSent;
 import cn.edu.whu.websocket.WSModelUtils;
 
-/*
- * Java两个线程，交替执行,实现同步。http://blog.csdn.net/keitho00/article/details/47059547
- * 用单独的线程，来发送数据，主线程用来接收数据。
- */
 public class WebSocketSyncClient extends WebSocketClient {
 	public static String sendMsg = "value=" + ValueSent.STR_10B;
 	long startTime = System.currentTimeMillis();

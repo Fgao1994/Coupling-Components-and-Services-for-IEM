@@ -20,7 +20,7 @@ public class TopModel extends LinkableEngine{
 		((TopModelEngine)this.engineApiAccess).setBufferInfos(this.bufferInfos);
 	}
 
-	//add by zmd,2015-03-11
+	
 	public double getTimeStep(){
 		return ((TopModelEngine)(this.engineApiAccess)).getTimeStep();
 	}

@@ -69,7 +69,6 @@ public class HargreavesEngine extends SimpleWrapper{
 		return true;
 	}
 	
-	//对获取的温度值进行排序，最低温度、平均温度、最高温度
 	private double[] doBubbleSort(double[] src)
     {
        int len=src.length;

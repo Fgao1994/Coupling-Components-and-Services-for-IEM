@@ -25,7 +25,7 @@ import cn.edu.whu.openmi.util.XMLOperation;
 
 public class SOSReaderEngine extends SimpleWrapper{
 
-	//能不用静态变量的就不要用。
+	
 	private  String ADDRESS = "Address",VERSION="Version",
 			PROCEDURE="Procedure",OFFERING="Offering",
 			OBSERVEDPROPERTY="ObservedProperty";
@@ -42,11 +42,11 @@ public class SOSReaderEngine extends SimpleWrapper{
 		InputStream inConfig = PrecipitationEngine.class.getClass().getResourceAsStream("/cn/edu/whu/openmi/models/sosreader/SOSReader-config.xml");
 		this.setVariablesFromConfigFile(inConfig);
 	}
-	//构建好请求的Request，在请求的时候，仅仅更改时间。
+	
 	@Override
 	public void initialize(HashMap properties){
 		super.initialize(properties);
-		//获取参数
+		
 		sosAddress = properties.get(ADDRESS).toString();
 		sosVersion = properties.get(VERSION).toString();
 		String offering = properties.get(OFFERING).toString();
@@ -71,16 +71,16 @@ public class SOSReaderEngine extends SimpleWrapper{
 		double timeStep = getTimeStep();
 		double timeStamp = ((TimeStamp)time).getModifiedJulianDay();
 		
-		//起始时间为上一步时间点，但不包括该时间点。
+		
 		String startTime = formatTime(timeStamp-timeStep+Double.MIN_VALUE);
-		//终止时间即为请求的时间点。对于结果只取最近的观测值。
+		
 		String endTime = formatTime(timeStamp);
 		
 		Document reqDoc = XMLOperation.changeReqTime(startTime, endTime, REQ_DOC);
 		Document respDoc = RequestMethodStore.POSTDoc(reqDoc.asXML(), sosAddress);
 		Double[] results = XMLOperation.parseSOSResp(respDoc);
 		
-		//获取不到值的时候直接跳过。
+		
 		if (results!=null && results.length!=0) {
 			this.setValues(this.getOutputExchangeItem(0).getQuantity().getID(), this.getOutputExchangeItem(0).getElementSet().getID(), new ScalarSet(results));
 		}
