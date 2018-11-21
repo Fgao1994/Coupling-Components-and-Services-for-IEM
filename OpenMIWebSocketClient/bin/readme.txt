@@ -1,1 +1,0 @@
-WebSocket2是对WebSocket改进之后的，删掉了一些没必要的交互。
