@@ -10,7 +10,7 @@ OpenMI(https://www.openmi.org/)
 
 * [API Reference](https://github.com/Fgao1994/Coupling-Components-and-Services-for-IEM/tree/master/docs)
 * [Runoff simulation Example](https://github.com/Fgao1994/Coupling-Components-and-Services-for-IEM/tree/master/docs/Runoff%20Simulation)
-* [Waterlogging disaster simulation Example](https://github.com/Fgao1994/Coupling-Components-and-Services-for-IEM/tree/master/docs/Runoff%20Simulation)
+* [Waterlogging disaster simulation Example](https://github.com/Fgao1994/Coupling-Components-and-Services-for-IEM/tree/master/docs/Waterlogging%20disaster%20simulation)
 * [Figures](https://github.com/Fgao1994/Coupling-Components-and-Services-for-IEM/tree/master/Figures) 
   
 ## The role of client and server in the IEM case 
