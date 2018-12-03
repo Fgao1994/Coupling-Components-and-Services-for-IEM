@@ -29,7 +29,7 @@ import cn.edu.whu.openmi.websocket2.WSTopModel2;
 
 public class HttpTopmodel extends SimpleWrapper{
 	
-
+	//用来保存客户端传入的数据
 	private double inputPrecipataion,inputPET,outputItem;
 	private int counter = 0;
 

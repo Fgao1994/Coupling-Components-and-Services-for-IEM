@@ -25,7 +25,7 @@ import cn.edu.whu.openmi.util.XMLOperation;
 
 public class SOSReaderEngine extends SimpleWrapper{
 
-
+	//能不用静态变量的就不要用。
 	private  String ADDRESS = "Address",VERSION="Version",
 			PROCEDURE="Procedure",OFFERING="Offering",
 			OBSERVEDPROPERTY="ObservedProperty";

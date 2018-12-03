@@ -10,6 +10,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import cn.edu.whu.openmi.websocket.WSModelUtils;
 
@@ -40,16 +42,27 @@ public class HttpTopmodelServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		Enumeration names = req.getHeaderNames();
-		System.out.println("===================================================================");
-		while(names.hasMoreElements()){
-			String name = (String)names.nextElement();
-			System.out.println(name+":"+req.getHeader(name));
-		}
-		System.out.println("this is topmodel");
+		//resp.setHeader("connection", "close");
+		HttpSession session = req.getSession();
+		//session.setMaxInactiveInterval(300);
+		long time = session.getMaxInactiveInterval();
+		//System.out.println(time);
+		//session.get
+		int headsize = 0;
+		//System.out.println("this is topmodel");
 		String method=req.getParameter(METHODKEY);
 		if (method.equals(Method_Initialize)) {
-			createTopmodel(req,resp);;
+			//System.out.println(req.getHeader(arg0));
+			/*Enumeration names = req.getHeaderNames();
+			System.out.println("===================================================================");
+			while(names.hasMoreElements()){
+				String name = (String)names.nextElement();
+				System.out.println(name+":"+req.getHeader(name));
+				headsize += (name+":"+req.getHeader(name)).getBytes().length;
+			}
+			System.out.println("the size of the http header is "+headsize);
+			*/
+			createTopmodel(req,resp);
 		}else if (method.equals(Method_getvalue)) {
 			getValue(req, resp);
 		}else if (method.equals(Method_Finish)) {
@@ -58,6 +71,7 @@ public class HttpTopmodelServlet extends HttpServlet {
 	}
 
 	public void finish(HttpServletRequest req,HttpServletResponse resp){
+		System.out.println("Gaofan");
 		String uuid = req.getParameter(UUIDKEY);
 		HttpTopmodel model = topModelMap.get(uuid);
 		if(model == null){
@@ -82,6 +96,8 @@ public class HttpTopmodelServlet extends HttpServlet {
 	//先获取对应PET和Precipation的值
 	public void getValue(HttpServletRequest req,HttpServletResponse resp){
 		String uuid = req.getParameter(UUIDKEY);
+		//System.out.println(uuid);
+		//String uuid = req.getParameter(UUIDKEY);
 		HttpTopmodel model = topModelMap.get(uuid);
 		if(model == null){
 			return ;
@@ -90,14 +106,14 @@ public class HttpTopmodelServlet extends HttpServlet {
 		String pet = req.getParameter(PET_Value_KEY);
 		String precip = req.getParameter(Precip_Value_KEY);
 		String time = req.getParameter(TIMEKEY);
-		
+		//System.out.println(uuid);
 		model.setInputPET(Double.valueOf(pet));
 		model.setInputPrecipataion(Double.valueOf(precip));
 		
 		model.performTimeStep();
 		
 		double result = model.getOutputItem();
-		String resultStr = WSModelUtils.appendToByte(result, 900);
+		String resultStr = WSModelUtils.appendToByte(result, 400);
 		//System.out.println(resultStr.getBytes().length);
 		resp.setContentType("text/html;charset=GB2312");
 		//write html page

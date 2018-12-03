@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import cn.edu.whu.openmi.websocket.WSModelUtils;
 
@@ -39,21 +40,28 @@ public class HttpGisVolumnServlet extends HttpServlet{
 			throws ServletException, IOException {
 		
 		//http header test
-		System.out.println("this is GisVolumn");
-		Enumeration names = req.getHeaderNames();
-		System.out.println("===================================================================");
-		while(names.hasMoreElements()){
-			String name = (String)names.nextElement();
-			System.out.println(name+":"+req.getHeader(name));
-		}
-		
-		
+		//System.out.println("this is GisVolumn");
+		HttpSession session = req.getSession();
+		//session.setMaxInactiveInterval(10);
+		//session.setAttribute("maxPostSize", "4194304");
+		//session.setAttribute("maxHttpHeaderSize", "655360");
+		long time = session.getMaxInactiveInterval();
+		System.out.println(time);
 		String method = req.getParameter(METHODKEY);
 		if (method.equals(Method_Initialize)) {
 			//System.out.println("initialized");
-			createModel(req,resp);;
+			Enumeration names = req.getHeaderNames();
+			System.out.println("===================================================================");
+			while(names.hasMoreElements()){
+				String name = (String)names.nextElement();
+				System.out.println(name+":"+req.getHeader(name));
+			}
+			
+			createModel(req,resp);
+			System.out.println("Initialize phase is executed successfully");
 		}else if (method.equals(Method_getvalue)) {
 			getValue(req, resp);
+			//System.out.println("Run phase is execut");
 		}else if (method.equals(Method_Finish)) {
 			finish(req, resp);
 		}
@@ -82,6 +90,7 @@ public class HttpGisVolumnServlet extends HttpServlet{
 	}
 	public void getValue(HttpServletRequest req,HttpServletResponse resp){
 		String uuid = req.getParameter(UUIDKEY);
+		System.out.println(uuid);
 		HttpGisVolumn model = gisVolumnMap.get(uuid);
 		if(model == null){
 			return ;
@@ -91,7 +100,7 @@ public class HttpGisVolumnServlet extends HttpServlet{
 		model.setInputFloodWater(Double.valueOf(flood_water));
 		model.performTimeStep();
 		double result = model.getOutputItem();
-		String resultStr = WSModelUtils.appendToByte(result, 900);
+		String resultStr = WSModelUtils.appendToByte(result, 102400);
 		resp.setContentType("text/html;charset=GB2312");
 		//write html page
 		PrintWriter out = null;

@@ -19,6 +19,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.websocket.ClientEndpointConfig;
+import javax.websocket.EndpointConfig;
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
 import javax.websocket.OnMessage;
@@ -26,6 +28,7 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
+import javax.websocket.server.ServerEndpointConfig;
 
 import nl.alterra.openmi.sdk.backbone.TimeStamp;
 import nl.alterra.openmi.sdk.utilities.CalendarConverter;
@@ -122,10 +125,41 @@ public class WSTopModel2 extends SimpleWrapper {
 	@OnOpen
 	public void onOpen(Session session,
 			@PathParam(value = "nickName") String nickName) {
-
+		//ClientHandshake 
 		this.session = session;
 		this.nickName = nickName;
+		//ClientEndpointConfig.Configurator endpointConfig = 
 //		System.out.println("the model named " + this.nickName + " is opened.");
+		//this.session.setMaxIdleTimeout(1800000);
+		this.session.setMaxTextMessageBufferSize(104857700);
+		//this.session.setMaxTextMessageBufferSize(2000000);
+		
+		//ServerEndpointConfig seConfig = ServerEndpointConfig.Builder.create()
+		
+		//System.out.println("Subprotocol is "+this.session.getNegotiatedSubprotocol());
+		//System.out.println("Protocol version is " +this.session.getProtocolVersion());
+		//System.out.println("Extension is " +this.session.getNegotiatedExtensions());
+		/*Map<String,Object> map = this.session.getUserProperties();
+		for(String key : map.keySet()){
+			System.out.println(key + ":" + map.get(key).toString());
+		}*/
+	
+		//HttpSession httpSession = (HttpSession) config.getUserProperties().get(HttpSession.class.getName());
+		//httpSession.setMaxInactiveInterval(1800000);
+		//System.out.println(JSON.toJSONString(httpSession));
+		//System.out.println(JSON.toJSONString(session.getRequestParameterMap()));
+		//this.session.s
+		/*WebSocketContainer wsContainer = this.session.getContainer();
+		wsContainer.setAsyncSendTimeout(2000000);
+		wsContainer.setDefaultMaxSessionIdleTimeout(2000000);
+		wsContainer.setDefaultMaxTextMessageBufferSize(602500);*/
+		
+		int textSize = this.session.getMaxTextMessageBufferSize();
+		long timeOut = this.session.getMaxIdleTimeout();
+		
+		System.out.println("---------------");
+		System.out.println("textSize = "+textSize);
+		System.out.println("timeOut = " + timeOut);
 		System.out.println("Connection Opened.");
 		// 测试传递参数
 		Map<String, String> pathParameters = session.getPathParameters();
@@ -198,7 +232,10 @@ public class WSTopModel2 extends SimpleWrapper {
 //				System.out.println("The server sends:"+resp);
 				//this.session.getBasicRemote().sendText(resp);
 				
-				this.session.getBasicRemote().sendText(WSModelUtils.appendToByte(resp, 900));
+				//this.session.getBasicRemote().sendText(WSModelUtils.appendToByte(resp, 716800));
+				//this.session.getBasicRemote().sendText(WSModelUtils.appendToByte(resp, 500));
+				this.session.getBasicRemote().sendText(WSModelUtils.appendToByte(resp, 400));
+				
 				//System.out.println(WSModelUtils.appendToByte(resp, 300).getBytes().length);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block

@@ -41,6 +41,14 @@
   <servlet>
     <servlet-name>TopmodelServlet</servlet-name>
     <servlet-class>cn.edu.whu.openmi.http.HttpTopmodelServlet</servlet-class>
+    <init-param>
+            <param-name>input</param-name>
+            <param-value>5000</param-value>
+    </init-param>
+    <init-param>
+            <param-name>output</param-name>
+            <param-value>5000</param-value>
+    </init-param>
   </servlet>
 
   <servlet-mapping>

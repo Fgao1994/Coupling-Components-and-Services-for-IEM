@@ -16,6 +16,7 @@ public class WebSocketTestServer {
 	Session session = null;
  
     /**
+     * 打开连接
      * 
      * @param session
      * @param nickName
@@ -27,13 +28,16 @@ public class WebSocketTestServer {
     	System.out.println("the server is opened.");
     }
  
-   
+    /**
+     * 关闭连接
+     */
     @OnClose
     public void onClose() {
        System.out.println("The connection is closed.");
     }
  
     /**
+     * 接收信息
      * 
      * @param message
      * @param nickName
@@ -53,6 +57,7 @@ public class WebSocketTestServer {
     }
  
     /**
+     * 错误信息响应
      * 
      * @param throwable
      */
