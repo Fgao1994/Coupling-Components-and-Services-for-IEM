@@ -16,16 +16,6 @@ OpenMI(https://www.openmi.org/)
 
 To evaluate the effectiveness of deploying models as WebSocket services, we did a comparative analysis of performance over model simulation between WebSocket and HTTP protocols.So client-end includes HTTP-based client and WebSocket-based client, the server-end includes HTTP-based server and WebSocket-based server.
 
-### Client:
-1. PrecipitationModel: Read the daily precipitation and wait TOPMODEL pull the daily precipitation;
-2. HargreavesModel: Read the daily temperature data and latitude data, and calculate the daily evapotranspiration and to wait TOPMODEL to pull. Note that you can write the daily evapotranspiration to local file system to check;
-3. HttpClientTopModel: Pull the daily precipitation and evapotranspiration from another two models, then send a request with the data to HTTP server of TOPMODEL;
-4. WebSocketClientTopModel: Pull the daily precipitation and evapotranspiration from another two models, then send a request with the data to WebSocket server of TOPMODEL.
-
-### Server:
-1. HttpServerTopModel: Get the daily precipitation and evapotranspiration, then calculate the daily runoff and return to client;
-2. WebSocketServerTopModel: Drive the run phase of the OpenMI component and calculate the daily runoff. 
-
 ## Status
 
 The project provides a complete and tested implementation of 
